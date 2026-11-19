@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<title>유튜브 운영 견적서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* 제안서와 같은 토큰을 쓴다. 금액은 표 하나에 모으고, 실행 계획은 월간 반복 주기 + 3개월 달력으로 나눈다. */
+:root {
+  --bg: #F5F8F8;
+  --surface: #FFFFFF;
+  --ink: #12202B;
+  --muted: #53646E;
+  --line: #D3DDDF;
+  --accent: #1E46C8;
+  --accent-soft: #E6ECFC;
+  --teal: #0A6B66;
+  --teal-soft: #DDF1EF;
+  --hero-bg: #1537A8;
+  --hero-ink: #FFFFFF;
+  --hero-muted: #C9D5FB;
+  --hero-line: #4A66C4;
+  --font-display: "Gowun Batang", "Noto Serif KR", "Apple SD Gothic Neo", serif;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E151B; --surface: #161F27; --ink: #E8EEF1; --muted: #9DADB7; --line: #2C3945;
+    --accent: #93ABFF; --accent-soft: #1D2A52; --teal: #62D3C9; --teal-soft: #12322F;
+    --hero-bg: #142C80; --hero-muted: #C4D0F8; --hero-line: #3F58AE;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E151B; --surface: #161F27; --ink: #E8EEF1; --muted: #9DADB7; --line: #2C3945;
+  --accent: #93ABFF; --accent-soft: #1D2A52; --teal: #62D3C9; --teal-soft: #12322F;
+  --hero-bg: #142C80; --hero-muted: #C4D0F8; --hero-line: #3F58AE;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.wrap {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+h1, h2 { font-family: var(--font-display); font-weight: 700; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.35; }
+h3 { font-size: 1.05rem; line-height: 1.5; font-weight: 700; }
+ul { padding-left: 1.15em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Hero */
+.hero { background: var(--hero-bg); color: var(--hero-ink); }
+.hero .wrap { display: grid; gap: 32px; padding-block: 56px 32px; }
+.hero-tag { font-size: .9rem; font-weight: 500; color: var(--hero-muted); }
+.hero h1 { font-size: clamp(2rem, 5.4vw, 3.4rem); line-height: 1.28; margin-top: 14px; }
+.hero-total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 18px; }
+.hero-total b { font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.hero-total span { color: var(--hero-muted); }
+.hero-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 24px; border-top: 1px solid var(--hero-line); padding-top: 20px; }
+.hero-facts dt { font-size: .8rem; color: var(--hero-muted); }
+.hero-facts dd { font-weight: 600; line-height: 1.5; }
+
+/* Section */
+section { padding-block: 60px; border-bottom: 1px solid var(--line); }
+section > .wrap { display: grid; gap: 32px; }
+.head { display: grid; gap: 10px; max-width: 46em; }
+.label { font-size: .84rem; font-weight: 600; color: var(--accent); letter-spacing: .02em; }
+.lead { font-size: 1.04rem; color: var(--muted); }
+.note { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+/* Quote table */
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; line-height: 1.6; }
+th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .84rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+tbody th { color: var(--ink); font-size: .95rem; font-weight: 700; white-space: normal; }
+td.r, th.r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.5; margin-top: 2px; }
+.quote { min-width: 680px; }
+.quote tfoot th, .quote tfoot td { border-bottom: 1px solid var(--line); color: var(--ink); font-size: .95rem; }
+.quote tr.sub td, .quote tr.sub th { color: var(--muted); }
+.quote tr.disc td { color: var(--teal); }
+.quote tr.total th, .quote tr.total td { background: var(--accent-soft); font-size: 1.1rem; font-weight: 700; border-bottom: 0; }
+.quote tr.total td.r { color: var(--accent); }
+
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card .price { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card ul { font-size: .93rem; line-height: 1.6; display: grid; gap: 4px; color: var(--ink); }
+
+.sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.sum > div { background: var(--surface); border: 1px solid var(--line); padding: 18px 20px; display: grid; gap: 2px; }
+.sum span { font-size: .86rem; color: var(--muted); }
+.sum b { font-family: var(--font-display); font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+.sum > div.key { background: var(--accent-soft); border-color: var(--accent); }
+
+/* Cycle */
+.cycle { display: flex; list-style: none; padding: 0; margin: 0; gap: 2px; }
+.cycle li { flex: 1 1 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); padding: 16px; display: grid; gap: 4px; align-content: start; }
+.cycle small { font-size: .78rem; font-weight: 600; color: var(--accent); }
+.cycle b { font-size: .98rem; }
+.cycle span { font-size: .86rem; color: var(--muted); line-height: 1.55; }
+.cycle li.shoot { background: var(--accent-soft); border-color: var(--accent); }
+.who { display: inline-block; font-size: .76rem; font-weight: 600; padding: 1px 8px; margin-top: 4px; justify-self: start; }
+.who.h { background: var(--teal-soft); color: var(--teal); }
+.who.p { background: var(--accent-soft); color: var(--accent); }
+.cycle li.shoot .who.p { background: var(--surface); }
+
+/* Calendar */
+.cal { min-width: 760px; }
+.cal td { font-size: .9rem; }
+.cal th[scope="row"] { white-space: nowrap; }
+.cal .up { color: var(--accent); font-weight: 600; }
+.cal tr.shootrow th, .cal tr.shootrow td { background: var(--accent-soft); }
+
+/* Roles */
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.roles .card ul { gap: 6px; }
+
+.terms { list-style: none; padding: 0; margin: 0; background: var(--surface); border: 1px solid var(--line); }
+.terms li { display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 4px 18px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.terms li:last-child { border-bottom: 0; }
+.terms b { font-weight: 700; }
+.terms span { color: var(--muted); font-size: .95rem; }
+
+footer { padding-block: 28px 44px; }
+
+@media (max-width: 860px) {
+  .hero-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards, .sum { grid-template-columns: minmax(0, 1fr); }
+  .cycle { flex-direction: column; }
+}
+@media (max-width: 640px) {
+  section { padding-block: 44px; }
+  .hero .wrap { padding-block: 40px 26px; }
+  .roles { grid-template-columns: minmax(0, 1fr); }
+  .terms li { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  body { font-size: 10.5pt; }
+  section { padding-block: 20px; }
+  .hero, .quote tr.total th, .quote tr.total td, .cycle li.shoot, .sum > div.key, .cal tr.shootrow th, .cal tr.shootrow td, .who { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .card, .cycle li, .sum > div, .terms li, tr { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="hero-tag">연세스탠다드치과 구월점 김동희 대표원장님 귀하 · 2026년 11월 19일</p>
+      <h1>유튜브 채널 운영 견적서와 실행 계획</h1>
+      <div class="hero-total"><b>월 400만원</b><span>롱폼 4편 · 하이라이트 쇼츠 8편 · 촬영 1회 패키지</span></div>
+    </div>
+    <dl class="hero-facts">
+      <div><dt>제작 분량</dt><dd>매월 롱폼 4편<br>하이라이트 쇼츠 8편</dd></div>
+      <div><dt>촬영</dt><dd>매월 1회, 하루<br>롱폼 4편 몰아서 촬영</dd></div>
+      <div><dt>공개 주기</dt><dd>매주 롱폼 1편<br>쇼츠 2편</dd></div>
+      <div><dt>첫 운영 기간</dt><dd>2026년 12월 ~<br>2027년 2월 (3개월)</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+<section id="quote">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">견적</p>
+      <h2>항목별 단가로는 월 490만원, 패키지로 400만원입니다</h2>
+      <p class="lead">롱폼·쇼츠·촬영을 따로 계약하시면 월 490만원입니다. 매달 같은 분량으로 꾸준히 운영하는 조건으로 90만원을 빼 드려 월 400만원으로 제안드립니다.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="quote">
+        <thead>
+          <tr><th scope="col">항목</th><th scope="col">포함 내용</th><th scope="col" class="r">단가</th><th scope="col" class="r">수량</th><th scope="col" class="r">금액</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">롱폼 영상</th><td>주제 기획, 대본, 편집, 자막, 썸네일, 업로드<small>1편 8~15분 내외</small></td><td class="r">1,000,000원</td><td class="r">4편</td><td class="r">4,000,000원</td></tr>
+          <tr><th scope="row">하이라이트 쇼츠</th><td>롱폼에서 핵심 장면을 뽑아 세로 편집, 자막, 업로드<small>롱폼 1편당 쇼츠 2편</small></td><td class="r">50,000원</td><td class="r">8편</td><td class="r">400,000원</td></tr>
+          <tr><th scope="row">촬영</th><td>촬영 인력, 카메라·조명·마이크, 병원 출장<small>하루에 롱폼 4편 촬영</small></td><td class="r">500,000원</td><td class="r">1회</td><td class="r">500,000원</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="sub"><th scope="row" colspan="4">항목별 합계</th><td class="r">4,900,000원</td></tr>
+          <tr class="disc"><th scope="row" colspan="4">월 정기 운영 패키지 할인</th><td class="r">−900,000원</td></tr>
+          <tr class="total"><th scope="row" colspan="4">월 패키지 금액</th><td class="r">4,000,000원</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="sum">
+      <div><span>항목별 합계 (월)</span><b>490만원</b></div>
+      <div class="key"><span>패키지 금액 (월)</span><b>400만원</b></div>
+      <div><span>첫 3개월 합계</span><b>1,200만원</b></div>
+    </div>
+
+    <p class="note">금액은 부가가치세 별도입니다. 정한 분량을 넘는 추가 촬영은 1회 50만원, 추가 롱폼은 1편 100만원, 추가 쇼츠는 1편 5만원의 단가를 적용합니다.</p>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">항목별 작업 범위</p>
+      <h2>원장님은 촬영 날 설명만 해 주시면 됩니다</h2>
+      <p class="lead">주제 기획부터 업로드까지 저희가 맡습니다. 원장님께는 주제 확인, 촬영, 공개 전 내용 확인만 부탁드립니다.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <h3>롱폼 영상</h3>
+        <p class="price">편당 100만원</p>
+        <ul>
+          <li>시청자 질문으로 주제 기획</li>
+          <li>원장님 말씀 흐름에 맞춘 대본</li>
+          <li>컷 편집, 자막, 그래픽</li>
+          <li>제안서 기준의 썸네일과 제목</li>
+          <li>업로드, 설명란, 고정 댓글</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>하이라이트 쇼츠</h3>
+        <p class="price">편당 5만원</p>
+        <ul>
+          <li>롱폼에서 핵심 장면 선정</li>
+          <li>세로 화면 편집과 큰 자막</li>
+          <li>롱폼으로 이어지는 링크 연결</li>
+          <li>롱폼 공개 주에 맞춰 업로드</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>촬영</h3>
+        <p class="price">회당 50만원</p>
+        <ul>
+          <li>병원으로 촬영팀 출장</li>
+          <li>카메라 2대, 조명, 무선 마이크</li>
+          <li>진료실·장비 보조 화면 촬영</li>
+          <li>하루에 롱폼 4편 분량 촬영</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="cycle">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">한 달 제작 주기</p>
+      <h2>다음 달 영상은 이번 달에 미리 찍어 둡니다</h2>
+      <p class="lead">촬영한 달의 다음 달에 영상을 공개합니다. 한 달 분량이 미리 준비되어 있어 원장님 일정이 바뀌어도 공개가 끊기지 않습니다.</p>
+    </div>
+    <ol class="cycle">
+      <li><small>1주차</small><b>주제 확정</b><span>다음 달 롱폼 4편 주제를 정리해 보내 드립니다.</span><span class="who h">원장님 확인</span></li>
+      <li><small>2주차</small><b>대본 전달</b><span>편마다 말씀하실 순서와 핵심 문장을 정리합니다.</span><span class="who h">원장님 검토</span></li>
+      <li class="shoot"><small>3주차</small><b>촬영 1회</b><span>하루에 롱폼 4편을 몰아서 촬영합니다.</span><span class="who h">원장님 출연</span></li>
+      <li><small>4주차</small><b>편집과 확인</b><span>롱폼과 쇼츠를 편집하고, 공개 전에 내용을 확인받습니다.</span><span class="who h">원장님 확인</span></li>
+      <li><small>다음 달</small><b>매주 공개</b><span>매주 롱폼 1편과 그 롱폼의 쇼츠 2편을 올립니다.</span><span class="who p">제작사 진행</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="calendar">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">첫 3개월 실행 계획</p>
+      <h2>11월 말 첫 촬영, 12월에 첫 영상을 공개합니다</h2>
+      <p class="lead">주제는 제안서의 첫 3개월 일정을 따릅니다. 무치악 보험 영상을 가장 먼저 올려, 상반기 보험 시행 전에 검색되는 영상을 만듭니다.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="cal">
+        <thead>
+          <tr><th scope="col">시기</th><th scope="col">촬영</th><th scope="col">공개하는 롱폼 (매주 1편)</th><th scope="col">쇼츠</th><th scope="col">준비할 일</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">11월</th><td>11월 4주차<br>12월분 4편</td><td>—</td><td>—</td><td>채널 이름·콘셉트 확정, 채널 개설, 마케팅 동의서 양식 정비</td></tr>
+          <tr><th scope="row">12월</th><td>12월 3주차<br>1월분 4편</td><td><span class="up">무치악 보험</span> · 65세 보험 임플란트 기본 · PFM·지르코니아 · 치과 상식 O/X</td><td class="num">8편</td><td>상담용 영상 공유 방식 정하기</td></tr>
+          <tr><th scope="row">2027년 1월</th><td>1월 3주차<br>2월분 4편</td><td>신경치료 · 아동 레진 보험 · 사랑니 · 당뇨·고혈압</td><td class="num">8편</td><td>댓글 질문으로 2월 이후 주제 보강</td></tr>
+          <tr><th scope="row">2월</th><td>연장하실 경우<br>3월분 4편</td><td>마취 과정 · 양치·치간칫솔·치실 · 디지털 진료 과정 · 앞니 레진</td><td class="num">8편</td><td>3개월 운영 돌아보기, 다음 분기 주제 목록 정리</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">매월 촬영 1회는 그다음 달 공개분입니다. 11월 촬영은 12월 패키지에, 12월 촬영은 1월 패키지에, 1월 촬영은 2월 패키지에 들어갑니다. 2월 촬영은 3월 이후로 연장하실 때만 진행합니다. 무치악 보험 영상은 고시 내용을 확인한 뒤 공개합니다.</p>
+  </div>
+</section>
+
+<section id="roles">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">역할 나누기</p>
+      <h2>병원과 제작사가 각각 맡는 일</h2>
+    </div>
+    <div class="roles">
+      <article class="card">
+        <span class="who h">병원</span>
+        <h3>원장님과 병원에서 해 주실 일</h3>
+        <ul>
+          <li>매월 주제 4편 확인</li>
+          <li>매월 하루 촬영 시간</li>
+          <li>공개 전 영상 내용 확인</li>
+          <li>촬영에 나오는 환자분과 직원의 동의 받기</li>
+          <li>진료 시간, 장비, 보험 기준 같은 사실 확인</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="who p">제작사</span>
+        <h3>저희가 맡는 일</h3>
+        <ul>
+          <li>주제 기획과 대본</li>
+          <li>촬영 장비와 인력</li>
+          <li>롱폼·쇼츠 편집, 자막, 썸네일</li>
+          <li>업로드와 공개 일정 관리</li>
+          <li>댓글 질문 정리와 다음 주제 제안</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="terms">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">계약 전에 정할 것</p>
+      <h2>아래 내용을 정하면 바로 시작하겠습니다</h2>
+    </div>
+    <ul class="terms">
+      <li><b>첫 촬영일</b><span>12월 첫 공개를 위해 11월 4주차 중 하루를 정해 주세요.</span></li>
+      <li><b>계약 기간</b><span>첫 3개월(2026년 12월~2027년 2월)을 기준으로 견적을 냈습니다.</span></li>
+      <li><b>결제 일정</b><span>월 단위로 결제하는 날짜를 정합니다.</span></li>
+      <li><b>수정 범위</b><span>공개 전 내용 확인 때 수정을 몇 번까지 반영할지 정합니다.</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="note">이 견적서는 「연세스탠다드치과 구월점 유튜브 제안서」의 콘텐츠 방향과 일정을 기준으로 작성했습니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>
